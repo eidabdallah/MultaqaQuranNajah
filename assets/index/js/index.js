@@ -41,8 +41,8 @@ function updateTime() {
 
 async function getTimeData() {
     const TodayDate = new Date();
-    const day = String(TodayDate.getDate()).padStart(2, '0'); 
-    const month = String(TodayDate.getMonth() + 1).padStart(2, '0'); 
+    const day = String(TodayDate.getDate()).padStart(2, '0');
+    const month = String(TodayDate.getMonth() + 1).padStart(2, '0');
     const year = TodayDate.getFullYear();
     const formattedDate = `${day}-${month}-${year}`;
     const { data } = await axios.get(`https://api.aladhan.com/v1/timingsByCity/${formattedDate}?city=Nablus&country=Palestine&method=2`);
@@ -77,7 +77,9 @@ async function updatePrayerTimes() {
         { name: 'المغرب', time: maghribTime },
         { name: 'العشاء', time: ishaTime }
     ];
-
+    setInterval(() => { updateTimeMustMinute(prayers, currentTimeInMinutes), 60000 });
+}
+function updateTimeMustMinute(prayers, currentTimeInMinutes) {
     let closestPrayer = null;
     let timeRemaining = null;
 
@@ -90,7 +92,7 @@ async function updatePrayerTimes() {
     }
     if (!closestPrayer) {
         closestPrayer = prayers[0];
-        timeRemaining = (1440 - currentTimeInMinutes) + fajrTime;
+        timeRemaining = (1440 - currentTimeInMinutes) + prayers[0].time;
     }
 
     const hoursRemaining = Math.floor(timeRemaining / 60);
@@ -98,7 +100,6 @@ async function updatePrayerTimes() {
 
     document.querySelector('#nextPrayer').textContent = `${closestPrayer.name}`;
     document.querySelector('#timeRemaining').textContent = `${hoursRemaining} ساعة و ${minutesRemaining} دقيقة`;
-
 }
 
 function convertTimeToMinutes(time) {
@@ -106,8 +107,7 @@ function convertTimeToMinutes(time) {
     return hour * 60 + minute;
 }
 
-setInterval(updateTime, 1000);
 updatePrayerTimes();
-setInterval(updatePrayerTimes, 60000);
+setInterval(updateTime, 1000);
 getTimeData();
 printTimeData();
