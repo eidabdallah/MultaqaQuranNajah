@@ -8,8 +8,8 @@ async function login() {
         submitButton.disabled = true;
         addInputEventListener(emailInput , passwordInput , submitButton);
 
-        const {data} = await axios.get("assets/login/data/loginData.json");
-        const usersData = data.login;
+        const {data} = await axios.get(`https://67326f262a1b1a4ae10ff12e.mockapi.io/multaqa/users`);
+        const usersData = data;
 
         loginForm.onsubmit = async function (e) {
             e.preventDefault();
@@ -47,15 +47,15 @@ function validateUser(email, password, usersData) {
 
 function redirectToPage(user) {
     if (user.role === "admin") {
-        window.location.href = "../../../admin.html";
+        window.location.href = "../../../admin/admin.html";
     } else if (user.role === "student") {
-        window.location.href = "../../../student.html";
+        window.location.href = "../../../student/student.html";
     } else if (user.role === "collegeAdmin") {
-        window.location.href = "../../../collegeAdmin.html";
+        window.location.href = "../../../collegeAdmin/collegeAdmin.html";
     } else if (user.role === "supervisor") {
-        window.location.href = "../../../supervisor.html";
+        window.location.href = "../../../supervisor/supervisor.html";
     } else if (user.role === "doctor") {
-        window.location.href = "../../../doctor.html";
+        window.location.href = "../../../doctor/doctor.html";
     }
 }
 
