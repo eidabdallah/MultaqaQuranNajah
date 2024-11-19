@@ -3,16 +3,19 @@ async function login() {
         const loginForm = document.querySelector('.loginForm');
         const passwordInput = document.querySelector('#floatingPassword');
         const emailInput = document.querySelector('#floatingInput');
-        const submitButton = document.querySelector('.loginForm .btn');
 
-        submitButton.disabled = true;
-        addInputEventListener(emailInput , passwordInput , submitButton);
-
-        const {data} = await axios.get(`https://67326f262a1b1a4ae10ff12e.mockapi.io/multaqa/users`);
+        const { data } = await axios.get(`https://67326f262a1b1a4ae10ff12e.mockapi.io/multaqa/users`);
         const usersData = data;
 
         loginForm.onsubmit = async function (e) {
             e.preventDefault();
+
+            const validationResult = validateForm(emailInput, passwordInput);
+            if (!validationResult.valid) {
+                showAlert(validationResult.message);
+                return;
+            }
+
             const user = await validateUser(emailInput.value, passwordInput.value, usersData);
             if (user) {
                 redirectToPage(user);
@@ -24,16 +27,15 @@ async function login() {
         handleError(error);
     }
 }
-function addInputEventListener(emailInput, passwordInput, submitButton) {
-    passwordInput.addEventListener('input', () => toggleButton(emailInput, passwordInput, submitButton));
-    emailInput.addEventListener('input', () => toggleButton(emailInput, passwordInput, submitButton));
-}
-function toggleButton(emailInput, passwordInput, submitButton) {
-    if (emailInput.value.trim() === '' || passwordInput.value.trim() === '') {
-        submitButton.disabled = true;
-    } else {
-        submitButton.disabled = false;
+
+function validateForm(emailInput, passwordInput) {
+    if (!emailInput.value.trim()) {
+        return { valid: false, message: "يرجى إدخال البريد الإلكتروني." };
     }
+    if (!passwordInput.value.trim()) {
+        return { valid: false, message: "يرجى إدخال كلمة المرور." };
+    }
+    return { valid: true };
 }
 
 function validateUser(email, password, usersData) {
@@ -59,6 +61,17 @@ function redirectToPage(user) {
     }
 }
 
+function showAlert(message) {
+    Swal.fire({
+        icon: 'warning',
+        title: 'تنبيه',
+        text: message,
+        confirmButtonText: 'حسنًا',
+        confirmButtonColor: '#3085d6',
+        timer: 5000
+    });
+}
+
 function showErrorMessage() {
     Swal.fire({
         icon: 'error',
@@ -69,6 +82,7 @@ function showErrorMessage() {
         timer: 5000
     });
 }
+
 function handleError(error) {
     console.error(error);
     Swal.fire({

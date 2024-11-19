@@ -1,19 +1,24 @@
 function register() {
     try {
-        const NameInput = document.querySelector('#floatingName');
-        const passwordInput = document.querySelector('#floatingPassword');
-        const emailInput = document.querySelector('#floatingInput');
-        const PhoneInput = document.querySelector('#floatingPhone');
-        const floatingGender = document.querySelector('#floatingGender');
-        const floatingCollege = document.querySelector('#floatingCollege');
-        const floatingSpecialization = document.querySelector('#floatingSpecialization');
-        const floatingPlan = document.querySelector('#floatingPlan');
-        const submitButton = document.querySelector('.RegisterForm .btn');
+        const NameInput = document.querySelector("#floatingName");
+        const passwordInput = document.querySelector("#floatingPassword");
+        const emailInput = document.querySelector("#floatingInput");
+        const PhoneInput = document.querySelector("#floatingPhone");
+        const floatingGender = document.querySelector("#floatingGender");
+        const floatingCollege = document.querySelector("#floatingCollege");
+        const floatingSpecialization = document.querySelector("#floatingSpecialization");
+        const floatingPlan = document.querySelector("#floatingPlan");
+        const submitButton = document.querySelector(".RegisterForm .btn");
 
-        submitButton.disabled = true;
-        addInputEventListener(NameInput, emailInput, passwordInput, PhoneInput, floatingGender, floatingCollege, floatingSpecialization, floatingPlan, submitButton);
+
+
         submitButton.onclick = function (e) {
             e.preventDefault();
+            const validationResult = validateForm(NameInput, emailInput, passwordInput, PhoneInput, floatingGender, floatingCollege, floatingSpecialization, floatingPlan);
+            if (!validationResult.valid) {
+                showAlert(validationResult.message);
+                return;
+            }
             handleSubmit(passwordInput);
         };
     } catch (error) {
@@ -21,59 +26,70 @@ function register() {
     }
 }
 
-function addInputEventListener(NameInput, emailInput, passwordInput, PhoneInput, floatingGender, floatingCollege, floatingSpecialization, floatingPlan, submitButton) {
-    NameInput.addEventListener('input', () => toggleButton(emailInput, passwordInput, NameInput, PhoneInput, floatingGender, floatingCollege, floatingSpecialization, floatingPlan, submitButton));
-    passwordInput.addEventListener('input', () => toggleButton(emailInput, passwordInput, NameInput, PhoneInput, floatingGender, floatingCollege, floatingSpecialization, floatingPlan, submitButton));
-    emailInput.addEventListener('input', () => toggleButton(emailInput, passwordInput, NameInput, PhoneInput, floatingGender, floatingCollege, floatingSpecialization, floatingPlan, submitButton));
-    PhoneInput.addEventListener('input', () => toggleButton(emailInput, passwordInput, NameInput, PhoneInput, floatingGender, floatingCollege, floatingSpecialization, floatingPlan, submitButton));
-    floatingGender.addEventListener('input', () => toggleButton(emailInput, passwordInput, NameInput, PhoneInput, floatingGender, floatingCollege, floatingSpecialization, floatingPlan, submitButton));
-    floatingCollege.addEventListener('input', () => toggleButton(emailInput, passwordInput, NameInput, PhoneInput, floatingGender, floatingCollege, floatingSpecialization, floatingPlan, submitButton));
-    floatingSpecialization.addEventListener('input', () => toggleButton(emailInput, passwordInput, NameInput, PhoneInput, floatingGender, floatingCollege, floatingSpecialization, floatingPlan, submitButton));
-    floatingPlan.addEventListener('input', () => toggleButton(emailInput, passwordInput, NameInput, PhoneInput, floatingGender, floatingCollege, floatingSpecialization, floatingPlan, submitButton));
+function validateForm(NameInput, emailInput, passwordInput, PhoneInput, floatingGender, floatingCollege, floatingSpecialization, floatingPlan) {
+    if (!NameInput.value.trim()) {
+        return { valid: false, message: "يرجى إدخال الاسم الكامل." };
+    }
+    if (!emailInput.value.trim()) {
+        return { valid: false, message: "يرجى إدخال البريد الإلكتروني." };
+    }
+    if (!passwordInput.value.trim()) {
+        return { valid: false, message: "يرجى إدخال كلمة المرور." };
+    }
+    if (!PhoneInput.value.trim()) {
+        return { valid: false, message: "يرجى إدخال رقم الهاتف." };
+    }
+    if (!floatingGender.value.trim()) {
+        return { valid: false, message: "يرجى اختيار الجنس." };
+    }
+    if (!floatingCollege.value.trim()) {
+        return { valid: false, message: "يرجى اختيار الكلية." };
+    }
+    if (!floatingSpecialization.value.trim()) {
+        return { valid: false, message: "يرجى اختيار التخصص." };
+    }
+    if (!floatingPlan.value.trim()) {
+        return { valid: false, message: "يرجى اختيار الخطة الدراسية." };
+    }
+    return { valid: true };
+}
+
+function showAlert(message) {
+    Swal.fire({
+        icon: "warning",
+        title: "تنبيه",
+        text: message,
+        confirmButtonText: "حسنًا",
+        confirmButtonColor: "#3085d6",
+        timer: 5000,
+    });
 }
 
 function handleSubmit(passwordInput) {
     if (passwordInput.value.length <= 9) {
         Swal.fire({
-            icon: 'warning',
-            title: 'تحذير',
-            text: 'كلمة المرور يجب أن تكون على الأقل 10 حروف.',
+            icon: "warning",
+            title: "تحذير",
+            text: "كلمة المرور يجب أن تكون على الأقل 10 حروف.",
         });
         return;
     }
     Swal.fire({
-        icon: 'success',
-        title: 'تم التسجيل بنجاح!',
-        text: 'تم التسجيل بنجاح. يمكنك الآن تسجيل الدخول.',
+        icon: "success",
+        title: "تم التسجيل بنجاح!",
+        text: "تم التسجيل بنجاح. يمكنك الآن تسجيل الدخول.",
     });
 }
 
 function handleError(error) {
     console.error(error);
     Swal.fire({
-        icon: 'error',
-        title: 'خطأ في التسجيل',
-        text: 'حدث خطأ ما. الرجاء المحاولة مرة أخرى.',
-        confirmButtonText: 'حاول مرة أخرى',
-        confirmButtonColor: '#3085d6',
+        icon: "error",
+        title: "خطأ في التسجيل",
+        text: "حدث خطأ ما. الرجاء المحاولة مرة أخرى.",
+        confirmButtonText: "حاول مرة أخرى",
+        confirmButtonColor: "#3085d6",
     });
-}
-
-function toggleButton(emailInput, passwordInput, NameInput, PhoneInput, floatingGender, floatingCollege, floatingSpecialization, floatingPlan, submitButton) {
-    if (
-        emailInput.value.trim() === '' ||
-        passwordInput.value.trim() === '' ||
-        NameInput.value.trim() === '' ||
-        floatingGender.value.trim() === '' ||
-        floatingCollege.value.trim() === '' ||
-        floatingSpecialization.value.trim() === '' ||
-        floatingPlan.value.trim() === '' ||
-        PhoneInput.value.trim() === ''
-    ) {
-        submitButton.disabled = true;
-    } else {
-        submitButton.disabled = false;
-    }
 }
 
 register();
