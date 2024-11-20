@@ -2,7 +2,7 @@ const examPatternRadios = document.querySelectorAll(".partExam");
 const selectElement = document.querySelector("#examRange");
 const examForm = document.querySelector('.examForm');
 const emailInput = document.querySelector('#floatingInput');
-const examTypeRadios = document.querySelectorAll('input[name="examType"]');
+const examTypeRadios = document.querySelectorAll('examType');
 const examDate = document.querySelector('#examDate');
 const examTime = document.querySelector('#examTime');
 
