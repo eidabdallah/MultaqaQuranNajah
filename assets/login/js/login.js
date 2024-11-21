@@ -4,9 +4,7 @@ async function login() {
         const passwordInput = document.querySelector('#floatingPassword');
         const emailInput = document.querySelector('#floatingInput');
 
-        const { data } = await axios.get(`https://67326f262a1b1a4ae10ff12e.mockapi.io/multaqa/users`);
-        const usersData = data;
-
+        const usersData = UserData();
         loginForm.onsubmit = async function (e) {
             e.preventDefault();
 
@@ -27,7 +25,36 @@ async function login() {
         handleError(error);
     }
 }
-
+function UserData() {
+    const user = [
+        {
+            email: "admin@gmail.com",
+            role: "admin",
+            password: "admin"
+        },
+        {
+            email: "student@gmail.com",
+            role: "student",
+            password: "student"
+        },
+        {
+            email: "supervisor@gmail.com",
+            role: "supervisor",
+            password: "supervisor"
+        },
+        {
+            email: "collegeAdmin@gmail.com",
+            role: "collegeAdmin",
+            password: "collegeAdmin"
+        },
+        {
+            email: "doctor@gmail.com",
+            role: "doctor",
+            password: "doctor"
+        }
+    ];
+    return user;
+}
 function validateForm(emailInput, passwordInput) {
     if (!emailInput.value.trim()) {
         return { valid: false, message: "يرجى إدخال البريد الإلكتروني." };
@@ -41,10 +68,10 @@ function validateForm(emailInput, passwordInput) {
 function validateUser(email, password, usersData) {
     for (let i = 0; i < usersData.length; i++) {
         if (usersData[i].email === email && usersData[i].password === password) {
-            return usersData[i]; 
+            return usersData[i];
         }
     }
-    return null; 
+    return null;
 }
 
 function redirectToPage(user) {
