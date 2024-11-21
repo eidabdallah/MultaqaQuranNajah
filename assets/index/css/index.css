@@ -6,7 +6,7 @@
     width: 50px;
 }
 
-.nav-item:hover {
+.nav-item a:hover {
     background-color: rgb(14, 13, 13);
 }
 
@@ -15,7 +15,7 @@
     background: linear-gradient(140deg, #ffffff 50%, rgb(80, 70, 18) 50%);
 }
 
-.Multaqainfo img {
+.Multaqainfo img , .athkars img{
     width: 80px;
 }
 
@@ -56,11 +56,23 @@
 }
 
 
-.prayerTime {
+.athkars {
     background: linear-gradient(140deg, rgb(80, 70, 18) 50%, #ffffff 50%);
 }
+.scrollable-content {
+    max-height: 200px; 
+    overflow-y: auto;
+}
+.scrollable-content::-webkit-scrollbar {
+    width: 8px;
+}
+.scrollable-content::-webkit-scrollbar-thumb {
+    background: #ffc107;
+    border-radius: 10px;
+}
 
-.prayerTime .time {
+
+.prayerTime .time , .athkars .athkar {
     background-color: #ffffff;
     border: 1px solid #ddd;
     border-radius: 10px;
@@ -68,7 +80,7 @@
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.prayerTime .time:hover {
+.prayerTime .time:hover , .athkars .athkar:hover{
     transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
@@ -86,14 +98,14 @@
 
 
 .footer {
-    background: linear-gradient(140deg, #ffffff 50%, rgb(80, 70, 18) 50%);
+    background-color: rgb(80, 70, 18);
 }
 
 .social-icon {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color:  rgb(208, 208, 205);
+    background-color: rgb(208, 208, 205);
     font-size: 29px;
     transition: background-color 0.3s, transform 0.3s;
 

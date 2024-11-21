@@ -10,9 +10,10 @@ body {
     width: 50px;
 }
 
-.nav-item:hover {
+.nav-item a:hover {
     background-color: rgb(14, 13, 13);
 }
+
 
 
 
@@ -56,5 +57,37 @@ ul.list-group {
     border-radius: 50%;
     background: conic-gradient(rgb(201, 191, 144) 0% 67.6%, #e9ecef 25%);
 }
+
+
+.table th, .table td {
+    padding: 20px;
+    vertical-align: middle;
+}
+
+.table th {
+    background-color: rgb(80, 70, 18);
+}
+
+
+
+.table tr:nth-child(even) td {
+    background-color: #f1f1f1;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    padding: 5px 10px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease;
+}
+
+.delete-btn:hover {
+    background-color: #0b0505;
+    color: white;
+}
+
 
 

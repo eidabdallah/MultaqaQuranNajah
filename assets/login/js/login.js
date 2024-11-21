@@ -1,11 +1,11 @@
-async function login() {
+function login() {
     try {
         const loginForm = document.querySelector('.loginForm');
         const passwordInput = document.querySelector('#floatingPassword');
         const emailInput = document.querySelector('#floatingInput');
 
         const usersData = UserData();
-        loginForm.onsubmit = async function (e) {
+        loginForm.onsubmit = function (e) {
             e.preventDefault();
 
             const validationResult = validateForm(emailInput, passwordInput);
@@ -14,7 +14,7 @@ async function login() {
                 return;
             }
 
-            const user = await validateUser(emailInput.value, passwordInput.value, usersData);
+            const user = validateUser(emailInput.value, passwordInput.value, usersData);
             if (user) {
                 redirectToPage(user);
             } else {
