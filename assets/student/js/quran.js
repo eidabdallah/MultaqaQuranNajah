@@ -37,19 +37,19 @@ async function displayAyat(surahNumber) {
     showLoader();
     const surahData = await GetAyat(surahNumber);
     document.querySelector('.surah-content').innerHTML = `
-    <div class="card p-4 w-100">
-            <h3 class="text-center text-warning mb-4">${surahData.name}</h3>
-             <div class="ayat-list">
-             ${surahData.ayahs.map(aya =>
-        `<p class="aya px-2 py-1 text-dark"> <span class="text-primary">(${aya.numberInSurah})</span> ${aya.text}</p>`
-    ).join(' ')}
-             </div>
-         </div>
+        <div class="card p-4 w-100">
+            <h3 class="text-center mb-4">${surahData.name}</h3>
+            <div class="ayat-list">
+                ${surahData.ayahs.map(aya =>`<p class="aya"> 
+            <span>(${aya.numberInSurah})</span> ${aya.text}
+        </p>`
+    ).join('')}
+            </div>
+        </div>
     `;
     hideLoader();
     document.querySelector('.surah-content').scrollIntoView({ behavior: 'smooth' });
 }
-
 document.querySelector('.surah').addEventListener('click', (e) => {
     const surahElement = e.target.closest('.quran-surah');
     if (surahElement) {
