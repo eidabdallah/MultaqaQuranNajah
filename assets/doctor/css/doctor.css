@@ -10,3 +10,43 @@
     background-color: rgb(14, 13, 13);
 }
 
+.AchievementsMultaqa {
+    background: linear-gradient(190deg, #ffffff 50%, rgb(80, 70, 18) 50%);
+
+}
+
+.achievement-box {
+    background: linear-gradient(135deg, #ffc107, #ffe593);
+}
+
+.achievement-box .icon {
+    font-size: 2.5rem;
+}
+
+.faculty-box {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #ffc107, #ffe593);
+}
+
+.faculty-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.faculty-box h3 {
+    font-size: 1.5rem;
+}
+
+.faculty-box p {
+    font-size: 1.2rem;
+}
+
+.transition-transform {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.faculty-box:hover .transition-transform {
+    transform: translateY(-10px);
+}

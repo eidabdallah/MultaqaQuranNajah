@@ -8,6 +8,8 @@
     <link rel="icon" href="./../assets/public/logo.jpg">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
     <link rel="stylesheet" href="./../assets/doctor/css/doctor.css">
 </head>
 
@@ -30,7 +32,8 @@
                             الرئيسية</a>
                     </li>
                     <li class="nav-item ms-2">
-                        <a class="nav-link text-white fw-bold border rounded-3" href="./examRequest.html">تقديم امتحان الرسمي </a>
+                        <a class="nav-link text-white fw-bold border rounded-3" href="./examRequest.html">تقديم امتحان
+                            الرسمي </a>
                     </li>
                 </ul>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -46,9 +49,132 @@
         </div>
     </nav>
     <main>
+        <section class="AchievementsMultaqa py-5">
+            <div class="container text-center bg-dark p-5 rounded-5">
+                <h2 class="fw-bold mb-5 text-warning">إحصائيات الملتقى للفصل الحالي</h2>
+                <div class="row gy-4">
+                    <div class="col-md-3">
+                        <div class="achievement-box rounded-4 shadow-lg p-4">
+                            <div class="icon mb-3">
+                                <i class="bi bi-file-earmark-check fs-1"></i>
+                            </div>
+                            <h5 class="fw-bold">عدد الامتحانات التي تم تقديمها</h5>
+                            <p id="exam-count" class="fs-3 fw-bold">40</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="achievement-box rounded-4 shadow-lg p-4">
+                            <div class="icon mb-3">
+                                <i class="bi bi-journal-richtext fs-1"></i>
+                            </div>
+                            <h5 class="fw-bold">عدد الصفحات التي تم تسميعها</h5>
+                            <p id="pages-count" class="fs-3 fw-bold">900</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="achievement-box rounded-4 shadow-lg p-4">
+                            <div class="icon mb-3">
+                                <i class="bi bi-book-half fs-1"></i>
+                            </div>
+                            <h5 class="fw-bold">عدد الصفحات التي تم مراجعتها</h5>
+                            <p id="review-count" class="fs-3 fw-bold">500</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="achievement-box rounded-4 shadow-lg p-4">
+                            <div class="icon mb-3">
+                                <i class="bi bi-people-fill fs-1"></i>
+                            </div>
+                            <h5 class="fw-bold">عدد الطلاب الملتزمون في التسميع والمراجعة</h5>
+                            <p id="participants-count" class="fs-3 fw-bold">120</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="faculty-achievements py-5">
+            <div class="container text-center">
+                <h2 class="fw-bold mb-5 text-primary">إحصائيات الكليات</h2>
+                <div class="row justify-content-center">
+                    <div class="col-lg-3 col-md-4 mb-4">
+                        <div class="faculty-box bg-primary text-white p-5 rounded-5 shadow-lg transition-transform">
+                            <h3 class="fw-bold mb-4">الهندسة وتكنولوجيا المعلومات</h3>
+                            <p class="fs-4">عدد الطلاب الذين قاموا بالتسميع: <span class="fw-bold">70</span></p>
+                            <p class="fs-4">نسبة التسميع: <span class="fw-bold text-success">90%</span></p>
+                            <p class="fs-4">عدد الطلاب الذين قدموا الامتحان: <span class="fw-bold">65</span></p>
+                        </div>
+                    </div>
+        
+                    <div class="col-lg-3 col-md-4 mb-4">
+                        <div class="faculty-box bg-success text-white p-5 rounded-5 shadow-lg transition-transform">
+                            <h3 class="fw-bold mb-4">الطب وعلوم الصحة</h3>
+                            <p class="fs-4">عدد الطلاب الذين قاموا بالتسميع: <span class="fw-bold">100</span></p>
+                            <p class="fs-4">نسبة التسميع: <span class="fw-bold text-warning">88%</span></p>
+                            <p class="fs-4">عدد الطلاب الذين قدموا الامتحان: <span class="fw-bold">90</span></p>
+                        </div>
+                    </div>
+        
+                    <div class="col-lg-3 col-md-4 mb-4">
+                        <div class="faculty-box bg-info text-white p-5 rounded-5 shadow-lg transition-transform">
+                            <h3 class="fw-bold mb-4">الأعمال والإتصال</h3>
+                            <p class="fs-4">عدد الطلاب الذين قاموا بالتسميع: <span class="fw-bold">85</span></p>
+                            <p class="fs-4">نسبة التسميع: <span class="fw-bold text-success">93%</span></p>
+                            <p class="fs-4">عدد الطلاب الذين قدموا الامتحان: <span class="fw-bold">80</span></p>
+                        </div>
+                    </div>
+        
+                    <div class="col-lg-3 col-md-4 mb-4">
+                        <div class="faculty-box bg-danger text-white p-5 rounded-5 shadow-lg transition-transform">
+                            <h3 class="fw-bold mb-4">العلوم</h3>
+                            <p class="fs-4">عدد الطلاب الذين قاموا بالتسميع: <span class="fw-bold">90</span></p>
+                            <p class="fs-4">نسبة التسميع: <span class="fw-bold text-danger">87%</span></p>
+                            <p class="fs-4">عدد الطلاب الذين قدموا الامتحان: <span class="fw-bold">85</span></p>
+                        </div>
+                    </div>
+        
+                    <div class="col-lg-3 col-md-4 mb-4">
+                        <div class="faculty-box bg-warning text-dark p-5 rounded-5 shadow-lg transition-transform">
+                            <h3 class="fw-bold mb-4">الفنون الجميلة</h3>
+                            <p class="fs-4">عدد الطلاب الذين قاموا بالتسميع: <span class="fw-bold">60</span></p>
+                            <p class="fs-4">نسبة التسميع: <span class="fw-bold text-success">85%</span></p>
+                            <p class="fs-4">عدد الطلاب الذين قدموا الامتحان: <span class="fw-bold">55</span></p>
+                        </div>
+                    </div>
+        
+                    <div class="col-lg-3 col-md-4 mb-4">
+                        <div class="faculty-box bg-dark text-white p-5 rounded-5 shadow-lg transition-transform">
+                            <h3 class="fw-bold mb-4">العلوم الإنسانية</h3>
+                            <p class="fs-4">عدد الطلاب الذين قاموا بالتسميع: <span class="fw-bold">75</span></p>
+                            <p class="fs-4">نسبة التسميع: <span class="fw-bold text-info">89%</span></p>
+                            <p class="fs-4">عدد الطلاب الذين قدموا الامتحان: <span class="fw-bold">70</span></p>
+                        </div>
+                    </div>
+        
+                    <div class="col-lg-3 col-md-4 mb-4">
+                        <div class="faculty-box bg-purple text-white p-5 rounded-5 shadow-lg transition-transform">
+                            <h3 class="fw-bold mb-4">الشريعة</h3>
+                            <p class="fs-4">عدد الطلاب الذين قاموا بالتسميع: <span class="fw-bold">80</span></p>
+                            <p class="fs-4">نسبة التسميع: <span class="fw-bold text-success">95%</span></p>
+                            <p class="fs-4">عدد الطلاب الذين قدموا الامتحان: <span class="fw-bold">75</span></p>
+                        </div>
+                    </div>
+        
+                    <div class="col-lg-3 col-md-4 mb-4">
+                        <div class="faculty-box bg-gray text-dark p-5 rounded-5 shadow-lg transition-transform">
+                            <h3 class="fw-bold mb-4">القانون</h3>
+                            <p class="fs-4">عدد الطلاب الذين قاموا بالتسميع: <span class="fw-bold">65</span></p>
+                            <p class="fs-4">نسبة التسميع: <span class="fw-bold text-primary">92%</span></p>
+                            <p class="fs-4">عدد الطلاب الذين قدموا الامتحان: <span class="fw-bold">60</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        
+        
         
     </main>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
